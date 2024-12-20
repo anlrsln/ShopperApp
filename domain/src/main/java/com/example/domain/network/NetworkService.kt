@@ -3,7 +3,7 @@ package com.example.domain.network
 import com.example.domain.model.Product
 
 interface NetworkService {
-    suspend fun getProucts():ResultWrapper<List<Product>>
+    suspend fun getProducts(category: String?):ResultWrapper<List<Product>>
 }
 
 

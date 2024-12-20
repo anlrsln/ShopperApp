@@ -18,9 +18,13 @@ import io.ktor.utils.io.InternalAPI
 import kotlinx.io.IOException
 
 class NetworkServiceImpl(val client: HttpClient) : NetworkService {
-    override suspend fun getProucts(): ResultWrapper<List<Product>> {
+    private val base_url = "https://fakestoreapi.com"
+    override suspend fun getProducts(category: String?): ResultWrapper<List<Product>> {
+        val new_url = if(category!=null) "$base_url/products/category/$category" else "$base_url/products"
+
+
         return makeWebRequest(
-            url = "https://fakestoreapi.com/products",
+            url = new_url,
             method = HttpMethod.Get,
             mapper = { dataModels: List<DataProductModel> ->
                 dataModels.map { it.toProduct() }

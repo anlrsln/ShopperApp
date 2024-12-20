@@ -1,3 +1,5 @@
+import org.gradle.api.internal.DocumentationRegistry.BASE_URL
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -7,6 +9,7 @@ plugins {
 android {
     namespace = "com.example.data"
     compileSdk = 35
+
 
     defaultConfig {
         minSdk = 24

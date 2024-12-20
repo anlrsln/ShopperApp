@@ -62,4 +62,8 @@ dependencies {
     implementation(libs.koin.android.compose)
     // navigation
     implementation(libs.compose.navigation)
+    // coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
 }
