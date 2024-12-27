@@ -1,4 +1,4 @@
-package com.example.shopperapp.ui.components.list.row
+package com.example.shopperapp.ui.screen.home.components.list.popular
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,7 +17,7 @@ import com.example.domain.model.Product
 import com.example.presentation.ui.components.ProductCard
 
 @Composable
-fun HomeProductRow(productList:List<Product>,title: String){
+fun HomeScreenFeaturedProductsView(productList:List<Product>,title: String){
     Column {
         Box(modifier = Modifier.padding(horizontal = 16.dp).fillMaxWidth()){
             Text(text = title, style = MaterialTheme.typography.titleMedium, modifier = Modifier.align(alignment = Alignment.CenterStart))

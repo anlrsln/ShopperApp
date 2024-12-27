@@ -1,5 +1,6 @@
 package com.example.data.network
 
+
 import com.example.data.model.DataProductModel
 import com.example.domain.model.Product
 import com.example.domain.network.NetworkService
@@ -17,12 +18,12 @@ import io.ktor.http.contentType
 import io.ktor.utils.io.InternalAPI
 import kotlinx.io.IOException
 
-class NetworkServiceImpl(val client: HttpClient) : NetworkService {
+class NetworkServiceImpl(val client: HttpClient): NetworkService {
+
     private val base_url = "https://fakestoreapi.com"
+
     override suspend fun getProducts(category: String?): ResultWrapper<List<Product>> {
         val new_url = if(category!=null) "$base_url/products/category/$category" else "$base_url/products"
-
-
         return makeWebRequest(
             url = new_url,
             method = HttpMethod.Get,
@@ -33,6 +34,18 @@ class NetworkServiceImpl(val client: HttpClient) : NetworkService {
     }
 
 
+
+    override suspend fun getCategories(): ResultWrapper<List<String>> {
+        val url = "$base_url/products/categories"
+        return makeWebRequest<List<String>, List<String>>(
+            url = url,
+            method = HttpMethod.Get,
+        )
+    }
+
+
+
+    // API'ye istek atmak için oluşturulan metot.
     @OptIn(InternalAPI::class)
     suspend inline fun <reified T, R> makeWebRequest(
         url: String,
@@ -78,3 +91,6 @@ class NetworkServiceImpl(val client: HttpClient) : NetworkService {
         }
     }
 }
+
+
+

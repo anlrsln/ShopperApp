@@ -1,5 +1,6 @@
 package com.example.data.repository
 
+
 import com.example.domain.model.Product
 import com.example.domain.network.NetworkService
 import com.example.domain.network.ResultWrapper
@@ -9,6 +10,5 @@ class ProductRepositoryImpl(private val networkService: NetworkService) : Produc
     override suspend fun getProduct(category:String?): ResultWrapper<List<Product>> {
         return networkService.getProducts(category)
     }
-
 
 }
